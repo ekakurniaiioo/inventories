@@ -17,7 +17,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Nama Barang</th>
+                    <th class="text-red-700">Nama Barang</th>
                     <th>Kategori</th>
                     <th>Stok</th>
                     <th>Edit</th>
