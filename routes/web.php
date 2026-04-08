@@ -3,20 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('landing-page'); 
+    return view('landing-page');
 });
 
 Route::get('/login', function () {
-    return view('auth.login'); 
+    return view('auth.login');
 })->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/dashboard/admin', function () {
-    return view('dashboard.admin.index');
-})->name('dashboard.admin');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/admin', [UserController::class, 'index'])->name('dashboard.admin');
+});
 
 Route::get('/dashboard/petugas', function () {
     return view('dashboard.petugas.index');
